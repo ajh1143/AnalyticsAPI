@@ -2,7 +2,8 @@
 Learning with Google Tutorial 
 """
 
-
+import tkinter as tk
+from tkinter import filedialog, messagebox
 from apiclient.discovery import build
 from oauth2client.service_account import ServiceAccountCredentials
 
@@ -83,7 +84,10 @@ class LearningAPI(object):
     def main(self):
         # Define the auth scopes to request.
         scope = 'https://www.googleapis.com/auth/analytics.readonly'
-        key_file_location = '<REPLACE_WITH_JSON_FILE>'
+        root = tk.Tk()
+        messagebox.showinfo("Set Path to Google Auth JSON File")
+        root.withdraw()
+        key_file_location = filedialog.askopenfilename()
 
         # Authenticate and construct service.
         service = get_service(
